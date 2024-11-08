@@ -10,7 +10,7 @@
 class PwmIn {
 public:
 
-  void attach(uint pin);
+  bool attach(uint pin);
   bool available(void);
   bool update(void);
 
@@ -23,12 +23,12 @@ public:
   // read_dutycycle (between 0 and 1)
   float get_dutycycle(void);
 
+
+
 private:
   PIO _pio;
-  int _sm;
-  int _offset;
-  bool _pio_state = false;
-
+  int _sm = -1;
+  int _offset = -1;
   uint _pin;
 
   float _conv_cto = 0.0075188;
